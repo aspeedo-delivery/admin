@@ -151,3 +151,21 @@ export type RestaurantReview = {
   comment: string | null;
   created_at: string;
 };
+
+export type RestaurantDetails = {
+  id: string;
+  name: string;
+  account_number: string;
+  ifsc_code: string;
+  account_holder_name: string;
+  upi_id: string | null;
+  fssai_license: string | null;
+  gst: string | null;
+  pan: string | null;
+  status: 'pending' | 'approved' | 'rejected';
+  rejection_reason?: string | null;
+  owner_email: string;
+  owner_phone?: string | null;
+  credentials_created?: boolean;
+  created_at: string;
+};

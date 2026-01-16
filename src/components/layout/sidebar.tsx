@@ -12,6 +12,7 @@ import {
   Settings,
   Store,
   ShoppingCart,
+  FileCheck,
 } from 'lucide-react';
 import {
   Tooltip,
@@ -29,6 +30,7 @@ const navConfig: Record<Role, { href: string; icon: React.ElementType; label: st
     { href: '/dashboard', icon: Home, label: 'Dashboard' },
     { href: '/dashboard/users', icon: Users, label: 'Users' },
     { href: '/dashboard/restaurants', icon: UtensilsCrossed, label: 'Restaurants' },
+    { href: '/dashboard/restaurants/approvals', icon: FileCheck, label: 'Restaurant Approvals' },
     { href: '/dashboard/products', icon: ShoppingCart, label: 'Products' },
     { href: '/dashboard/orders/food', icon: Package, label: 'Food Orders' },
     { href: '/dashboard/orders/courier', icon: Package, label: 'Courier Orders' },
@@ -46,17 +48,17 @@ const navConfig: Record<Role, { href: string; icon: React.ElementType; label: st
 
 
 const getNavItems = (role: keyof typeof navConfig) => {
-    return navConfig[role] || [];
+  return navConfig[role] || [];
 }
 
 const getLogoLink = (role: keyof typeof navConfig) => {
-    return navConfig[role]?.[0]?.href || '/dashboard';
+  return navConfig[role]?.[0]?.href || '/dashboard';
 }
 
 export default function Sidebar() {
   const { user } = useAuth();
   const pathname = usePathname();
-  
+
   if (!user) return null;
 
   const navItems = getNavItems(user.role);
